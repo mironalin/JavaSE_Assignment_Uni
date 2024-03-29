@@ -3,12 +3,12 @@ package eu.deic.oop;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class ProgMain {
 
     public static void generateOneHundredNumbers(int range, List<Integer> numbersList) {
         Random random = new Random();
-
         for (int i = 0; i < 100; i++) {
             numbersList.add(random.nextInt(range));
         }
@@ -37,7 +37,7 @@ public class ProgMain {
             if (i == 20 || i == 40 || i == 60 || i == 80) {
                 System.out.println();
             }
-            System.out.printf("%4d", numbersList.get(i));
+            System.out.printf("%6d", numbersList.get(i));
         }
         System.out.println();
         System.out.println("\nThe average: " + average);
@@ -47,8 +47,12 @@ public class ProgMain {
 
     public static void main(String[] args) {
         List<Integer> numbersList = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
-        generateOneHundredNumbers(100, numbersList);
+        System.out.print("Input range: ");
+        int range = Integer.parseInt(scanner.nextLine());
+        System.out.println();
+        generateOneHundredNumbers(range, numbersList);
 
         double average = calculateAverage(numbersList);
         int aboveAverage = aboveAverage(numbersList, average);

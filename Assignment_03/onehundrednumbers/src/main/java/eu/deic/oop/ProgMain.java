@@ -59,5 +59,6 @@ public class ProgMain {
 
         printDetails(numbersList, average, aboveAverage);
 
+        scanner.close();
     }
 }

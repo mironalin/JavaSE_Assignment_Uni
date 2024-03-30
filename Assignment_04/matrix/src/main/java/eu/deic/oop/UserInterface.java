@@ -1,15 +1,11 @@
 package eu.deic.oop;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
-    private List<Matrix> matrixList;
     private Scanner scanner;
 
     public UserInterface(Scanner scanner) {
-        matrixList = new ArrayList<>();
         this.scanner = scanner;
     }
 
@@ -117,33 +113,45 @@ public class UserInterface {
 
                 case 5:
                     continueOperations = false;
-                    System.out.println("\nExiting...");
                     break;
 
             }
         }
-
-        System.out.println("\n-------------------Matrix Operations-------------------");
+        System.out.println("\n---------------Exiting Matrix Operations---------------");
 
     }
 
     public void start() {
-        System.out.println("\n===========================Matrix Calculator===========================\n");
+        boolean exit = false;
 
-        // Create the matrixes;
-        Matrix firstMatrix = createMatrixInterface("first");
-        System.out.println();
-        Matrix secondMatrix = createMatrixInterface("second");
+        while (!exit) {
+            System.out.println("\n===========================Matrix Calculator===========================\n");
 
-        // Print the matrixes;
-        System.out.println();
-        printMatrixes(firstMatrix, secondMatrix);
+            // Create the matrixes;
+            Matrix firstMatrix = createMatrixInterface("first");
+            System.out.println();
+            Matrix secondMatrix = createMatrixInterface("second");
 
-        // Perform operations
-        System.out.println();
-        performOperations(firstMatrix, secondMatrix);
-        System.out.println();
+            // Print the matrixes;
+            System.out.println();
+            printMatrixes(firstMatrix, secondMatrix);
 
-        System.out.println("=======================================================================\n");
+            // Perform operations
+            System.out.println();
+            performOperations(firstMatrix, secondMatrix);
+            System.out.println();
+
+            System.out.println("Do you want to perform operations on other matrixes?\n");
+            System.out.println("1. Yes");
+            System.out.println("2. No, Exit");
+            System.out.print("\nEnter your choice: ");
+            int value = Integer.parseInt(scanner.nextLine());
+
+            if (value == 2) {
+                exit = true;
+            }
+
+            System.out.println("\n=======================Exiting Matrix Calculator=======================\n");
+        }
     }
 }
